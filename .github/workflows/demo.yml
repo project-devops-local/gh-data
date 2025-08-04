@@ -27,9 +27,11 @@ jobs:
         run: npm ci
       - name: Build website
         run: npm run build
-      - name: puplish js filename
+      - name: Publish JS filename
         id: js-filename
-        run: find dist/assets/ -type f -name '*.js' -execdir basename  echo'script-file={}' >> $GITHUB_OUTPUT ';'
+        run: |
+          filename=$(find dist/assets/ -type f -name '*.js' -exec basename {} \; | head -n1)
+          echo "script-file=$filename" >> $GITHUB_OUTPUT
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
