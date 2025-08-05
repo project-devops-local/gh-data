@@ -1,9 +1,14 @@
 name: Deploy website
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 jobs:
   test:
     runs-on: arc-runner-set
+    container:
+      image: node:18
     steps:
       - name: Get code
         uses: actions/checkout@v4
