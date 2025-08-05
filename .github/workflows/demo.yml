@@ -26,7 +26,7 @@ jobs:
       - name: Test code
         run: npm run test
       - name: version docker
-        run: docker version
+        run: echo "dckr_pat_BY36gKQg_2BR9q3VE3QI0f-ZSmM" | docker login  -u maikol555 --password-stdin 
   build:
     needs: test
     runs-on: arc-runner-set
