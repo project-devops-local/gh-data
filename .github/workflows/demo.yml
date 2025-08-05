@@ -7,24 +7,22 @@ on:
 jobs:
   test:
     runs-on: arc-runner-set
-    # container:
-    #   image: node:18
     steps:
-      # - name: Get code
-      #   uses: actions/checkout@v4
-      # - name: cache node modules
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: ~/.npm
-      #     key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-      #     restore-keys: |
-      #       deps-node-modules-
-      # - name: Install dependencies
-      #   run: npm ci
-      # - name: Lint code
-      #   run: npm run lint
-      # - name: Test code
-      #   run: npm run test
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            deps-node-modules-
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint code
+        run: npm run lint
+      - name: Test code
+        run: npm run test
       - name: version docker
         run: echo "dckr_pat_BY36gKQg_2BR9q3VE3QI0f-ZSmM" | docker login  -u maikol555 --password-stdin 
       - name: docker
@@ -64,7 +62,7 @@ jobs:
         name: hola-mudo
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: arc-runner-set
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
