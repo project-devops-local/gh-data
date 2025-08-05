@@ -1,0 +1,21 @@
+name: Actions Runner Controller Demo
+on:
+  workflow_dispatch:
+
+jobs:
+  Explore-GitHub-Actions:
+    # You need to use the INSTALLATION_NAME from the previous step
+    runs-on: arc-runner-set
+    env:
+      personal_var: 'mi nombre de prueba'
+    steps:
+    - run: echo "🎉 This job uses runner scale set runners!"
+    - name: install node
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+    - name: version node
+      run: node -v
+    - name: echo personal variable
+      run: |
+        echo "Personal variable is ${{ env.personal_var }}"
