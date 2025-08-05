@@ -25,6 +25,8 @@ jobs:
         run: npm run lint
       - name: Test code
         run: npm run test
+      - name: version docker
+        run: docker version
   build:
     needs: test
     runs-on: arc-runner-set
