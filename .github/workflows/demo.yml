@@ -1,11 +1,9 @@
 name: Deploy website
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: arc-runner-set
     steps:
       - name: Get code
         uses: actions/checkout@v4
@@ -24,7 +22,7 @@ jobs:
         run: npm run test
   build:
     needs: test
-    runs-on: ubuntu-latest
+    runs-on: arc-runner-set
     outputs:
       script-file: ${{ steps.js-filename.outputs.script-file }}
     steps:
