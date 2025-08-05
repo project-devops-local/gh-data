@@ -13,7 +13,7 @@ jobs:
     - name: install node
       uses: actions/setup-node@v2
       with:
-        node-version: 14
+        node-version: 18
     - name: version node
       run: node -v
     - name: echo personal variable
