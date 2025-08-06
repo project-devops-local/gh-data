@@ -1,0 +1,19 @@
+name: CI with Containerized Job
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: runner-personalizado
+    container:
+      image: docker.io/maikol555/trivy:2.0
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: comando buildah
+        run: buildah --version
