@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    runs-on: arc-runner-set
+    runs-on: [self-hosted, arc-runner-set]
     steps:
       - name: Get code
         uses: actions/checkout@v4
@@ -28,7 +28,7 @@ jobs:
 
   build:
     needs: test
-    runs-on: arc-runner-set
+    runs-on: [self-hosted, arc-runner-set]
     outputs:
       script-file: ${{ steps.js-filename.outputs.script-file }}
     steps:
@@ -62,7 +62,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: arc-runner-set
+    runs-on: [self-hosted, arc-runner-set]
     environment:
       name: production
     strategy:
