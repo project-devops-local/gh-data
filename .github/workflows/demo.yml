@@ -65,7 +65,7 @@ jobs:
     runs-on: arc-runner-set
     strategy:
       matrix:
-        message: [ "Deploying frontend", "Deploying backend", "Deploying database" ]
+        message: [ "Deploying frontend", "Deploying backend", "Deploying database", "Deploying cache" , "Deploying CDN",  "Deploying API" ]
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
