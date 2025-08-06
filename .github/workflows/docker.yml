@@ -27,3 +27,5 @@ jobs:
         uses: actions/checkout@v4
       - name: comando aws
         run: aws --version
+      - name: comando java
+        run: java --version
