@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    runs-on: demo-runner-scale-set
+    runs-on: devops-runner-scale-set
     steps:
       - name: Get code
         uses: actions/checkout@v4
@@ -28,7 +28,7 @@ jobs:
 
   build:
     needs: test
-    runs-on: demo-runner-scale-set
+    runs-on: devops-runner-scale-set
     outputs:
       script-file: ${{ steps.js-filename.outputs.script-file }}
     steps:
@@ -62,7 +62,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: demo-runner-scale-set
+    runs-on: devops-runner-scale-set
     environment:
       name: production
     strategy:
