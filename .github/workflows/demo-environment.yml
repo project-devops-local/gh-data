@@ -15,14 +15,17 @@ jobs:
     with:
       environment: develop
 
+
   deploy-staging:
     if: github.ref == 'refs/heads/staging'
     uses: project-devops-local/devops-reusable-actions/.github/workflows/deploy.yml@main
     with:
       environment: release
 
+
   deploy-production:
     if: github.ref == 'refs/heads/main'
     uses: project-devops-local/devops-reusable-actions/.github/workflows/deploy.yml@main
     with:
       environment: production
+
