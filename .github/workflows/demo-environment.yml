@@ -6,7 +6,8 @@ on:
       - develop
       - release
       - main
-
+permissions:
+  contents: read
 jobs:
   deploy-develop:
     if: github.ref == 'refs/heads/develop'
